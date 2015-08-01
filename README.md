@@ -7,14 +7,18 @@ Date Picker | Time Picker
 
 You can report any issue on issue tracker.
 
+#Importing
+please refer to the [relative wiki page](https://github.com/mohamad-amin/PersianMaterialDateTimePicker/wiki/Importing-to-Android-Studio)
+
 # Usage
 The library follows the same API as other pickers in the Android framework.
-After adding the library, for using a picker in your project you need to :
+After adding the library, for using a picker in your project you need to:
+
 1. Implement an `OnTimeSetListener`/`OnDateSetListener`
 2. Create a `TimePickerDialog`/`DatePickerDialog` using the supplied factory
 3. Theme the pickers
 
-## Implement an `OnTimeSetListener`/`OnDateSetListener`
+### Implement an `OnTimeSetListener`/`OnDateSetListener`
 In order to receive the date or time set in the picker, you will need to implement the `OnTimeSetListener` or
 `OnDateSetListener` interfaces. Typically this will be the `Activity` or `Fragment` that creates the Pickers. The callbacks use the same API as the standard Android pickers.
 ```java
