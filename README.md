@@ -5,10 +5,10 @@ Date Picker | Time Picker
 ---- | ----
 ![Date Picker](http://i59.tinypic.com/rab4vq.jpg) | ![Time Picker](https://raw.github.com/wdullaer/MaterialDateTimePicker/gh-pages/images/time_picker.png)
 
-You can report any issue on issue tracker. **Note: If you speak Persian, you can submit issues with Persian language and I will check them. :) **
+You can report any issue on issue tracker. **Note: If you speak Persian, you can submit issues with Persian (Farsi) language and I will check them. :)**
 
 #Importing
-please refer to the [relative wiki page](https://github.com/mohamad-amin/PersianMaterialDateTimePicker/wiki/Importing-to-Android-Studio).
+Please refer to the [relative wiki page](https://github.com/mohamad-amin/PersianMaterialDateTimePicker/wiki/Importing-to-Android-Studio).
 
 # Usage
 The library follows the same API as other pickers in the Android framework.
