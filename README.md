@@ -5,7 +5,7 @@ Date Picker | Time Picker
 ---- | ----
 ![Date Picker](http://i59.tinypic.com/rab4vq.jpg) | ![Time Picker](https://raw.github.com/wdullaer/MaterialDateTimePicker/gh-pages/images/time_picker.png)
 
-You can report any issue on issue tracker. **Note: If you speak Persian, you can submit issues with Persian (Farsi) language and I will check them. :)**
+You can report any issue on issues page. **Note: If you speak Persian, you can submit issues with Persian (Farsi) language and I will check them. :)**
 
 #Importing
 Please refer to the [relative wiki page](https://github.com/mohamad-amin/PersianMaterialDateTimePicker/wiki/Importing-to-Android-Studio).
