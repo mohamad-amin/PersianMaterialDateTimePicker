@@ -3,7 +3,7 @@ This library offers a hijri/shamsi (Iran Calendar) Date Picker and a normal time
 
 Date Picker | Time Picker
 ---- | ----
-![Date Picker](http://i59.tinypic.com/rab4vq.jpg) | ![Time Picker](https://raw.github.com/wdullaer/MaterialDateTimePicker/gh-pages/images/time_picker.png)
+![Date Picker](https://github.com/mohamad-amin/PersianMaterialDateTimePicker/raw/master/resources/datepicker.png) | ![Time Picker](https://github.com/mohamad-amin/PersianMaterialDateTimePicker/raw/master/resources/timepicker.png)
 
 You can report any issue on issues page. **Note: If you speak Persian, you can submit issues with Persian (Farsi) language and I will check them. :)**
 
