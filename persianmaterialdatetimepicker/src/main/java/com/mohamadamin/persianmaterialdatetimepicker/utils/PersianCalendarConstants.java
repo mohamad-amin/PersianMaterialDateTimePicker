@@ -39,7 +39,7 @@ public class PersianCalendarConstants {
 	public static final long PERSIAN_EPOCH = 1948321;
 
 	public static final String[] persianMonthNames = { "\u0641\u0631\u0648\u0631\u062f\u06cc\u0646", // Farvardin
-			"\u0627\u0631\u062f\u06cc\u200c\u0628\u0647\u0634\u062a", // Ordibehesht
+			"\u0627\u0631\u062f\u06cc\u0628\u0647\u0634\u062a", // Ordibehesht
 			"\u062e\u0631\u062f\u0627\u062f", // Khordad
 			"\u062a\u06cc\u0631", // Tir
 			"\u0645\u0631\u062f\u0627\u062f", // Mordad
