@@ -7,6 +7,7 @@
     <string name="selected_date">The date you picked will be shown here.</string>
     <string name="pick_time">Pick Time</string>
     <string name="pick_date">Pick Date</string>
+    <string name="pick_multi_date">Pick Multi Date</string>
     <string name="mode_24_hours">Use 24 hour mode</string>
     <string name="mode_dark_time">Use dark theme</string>
     <string name="mode_dark_date">Use dark theme</string>

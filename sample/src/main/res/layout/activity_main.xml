@@ -41,6 +41,19 @@
         android:layout_height="wrap_content"
         android:text="@string/pick_date"/>
 
+    <TextView
+        android:id="@+id/multi_date_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/abc_text_size_medium_material"
+        android:text="@string/selected_date"/>
+
+    <Button
+        android:id="@+id/multi_date_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pick_multi_date"/>
+
     <CheckBox
         android:id="@+id/mode_dark_date"
         android:layout_width="wrap_content"
