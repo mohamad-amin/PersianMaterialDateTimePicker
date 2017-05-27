@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/mohamad-amin/PersianMaterialDateTimePicker'
     gitUrl = 'https://github.com/mohamad-amin/PersianMaterialDateTimePicker.git'
 
-    libraryVersion = '1.2.1'
+    libraryVersion = '1.3.1'
 
     developerId = 'mohamad-amin'
     developerName = 'Mohamad Amin Mohamadi'
@@ -31,8 +31,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 25
-        versionCode 3
-        versionName "1.2.1"
+        versionCode 4
+        versionName "1.3.1"
     }
     buildTypes {
         release {
