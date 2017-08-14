@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.DeviceDefault">
+    <style name="AppTheme" parent="Base.Theme.AppCompat">
         <item name="colorPrimary">#009688</item>
         <item name="colorPrimaryDark">#00796b</item>
     </style>

@@ -10,21 +10,26 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
+import com.mohamadamin.persianmaterialdatetimepicker.multidate.MultiDatePickerDialog;
 import com.mohamadamin.persianmaterialdatetimepicker.time.RadialPickerLayout;
 import com.mohamadamin.persianmaterialdatetimepicker.time.TimePickerDialog;
 import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity implements
         TimePickerDialog.OnTimeSetListener,
         DatePickerDialog.OnDateSetListener,
+        MultiDatePickerDialog.OnDateSetListener,
         View.OnClickListener {
 
     private static final String TIMEPICKER = "TimePickerDialog",
-            DATEPICKER = "DatePickerDialog";
+            DATEPICKER = "DatePickerDialog", MULTIDATEPICKER = "MultiDatePickerDialog";
 
     private CheckBox mode24Hours, modeDarkTime, modeDarkDate;
-    private TextView timeTextView, dateTextView;
-    private Button timeButton, dateButton;
+    private TextView timeTextView, dateTextView, multiDateTextView;
+    private Button timeButton, dateButton, multiDataButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,24 +40,27 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void initializeViews() {
-        timeTextView = (TextView)findViewById(R.id.time_textview);
-        dateTextView = (TextView)findViewById(R.id.date_textview);
-        timeButton = (Button)findViewById(R.id.time_button);
-        dateButton = (Button)findViewById(R.id.date_button);
-        mode24Hours = (CheckBox)findViewById(R.id.mode_24_hours);
-        modeDarkTime = (CheckBox)findViewById(R.id.mode_dark_time);
-        modeDarkDate = (CheckBox)findViewById(R.id.mode_dark_date);
+        timeTextView = (TextView) findViewById(R.id.time_textview);
+        dateTextView = (TextView) findViewById(R.id.date_textview);
+        multiDateTextView = (TextView) findViewById(R.id.multi_date_textview);
+        timeButton = (Button) findViewById(R.id.time_button);
+        dateButton = (Button) findViewById(R.id.date_button);
+        multiDataButton = (Button) findViewById(R.id.multi_date_button);
+        mode24Hours = (CheckBox) findViewById(R.id.mode_24_hours);
+        modeDarkTime = (CheckBox) findViewById(R.id.mode_dark_time);
+        modeDarkDate = (CheckBox) findViewById(R.id.mode_dark_date);
     }
 
     private void handleClicks() {
         timeButton.setOnClickListener(this);
         dateButton.setOnClickListener(this);
+        multiDataButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.time_button : {
+            case R.id.time_button: {
                 PersianCalendar now = new PersianCalendar();
                 TimePickerDialog tpd = TimePickerDialog.newInstance(
                         MainActivity.this,
@@ -70,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements
                 tpd.show(getFragmentManager(), TIMEPICKER);
                 break;
             }
-            case R.id.date_button : {
+            case R.id.date_button: {
                 PersianCalendar now = new PersianCalendar();
                 DatePickerDialog dpd = DatePickerDialog.newInstance(
                         MainActivity.this,
@@ -82,23 +90,46 @@ public class MainActivity extends AppCompatActivity implements
                 dpd.show(getFragmentManager(), DATEPICKER);
                 break;
             }
-            default: break;
+            case R.id.multi_date_button:
+                MultiDatePickerDialog mdpd = MultiDatePickerDialog.newInstance(MainActivity.this, null);
+                PersianCalendar[] pc = new PersianCalendar[30];
+                for (int i = 0; i < pc.length; i++) {
+                    pc[i] = new PersianCalendar(System.currentTimeMillis());
+                    pc[i].add(Calendar.DAY_OF_YEAR, i);
+                }
+                mdpd.setMinDate(pc[0]);
+                mdpd.setMaxDate(pc[29]);
+                //mdpd.setSelectableDays(pc);
+                mdpd.setThemeDark(modeDarkDate.isChecked());
+                mdpd.show(getFragmentManager(), MULTIDATEPICKER);
+                break;
+            default:
+                break;
         }
     }
 
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
-        String hourString = hourOfDay < 10 ? "0"+hourOfDay : ""+hourOfDay;
-        String minuteString = minute < 10 ? "0"+minute : ""+minute;
-        String time = "You picked the following time: "+hourString+":"+minuteString;
+        String hourString = hourOfDay < 10 ? "0" + hourOfDay : "" + hourOfDay;
+        String minuteString = minute < 10 ? "0" + minute : "" + minute;
+        String time = "You picked the following time: " + hourString + ":" + minuteString;
         timeTextView.setText(time);
+    }
+
+    @Override
+    public void onDateSet(MultiDatePickerDialog view, ArrayList<PersianCalendar> selectedDays) {
+        String date = "You picked the following dates:\n\t";
+        for (PersianCalendar calendar : selectedDays) {
+            date += calendar.getPersianDay() + "/" + (calendar.getPersianMonth() + 1)
+                    + "/" + calendar.getPersianYear() + "\n\t";
+        }
+        multiDateTextView.setText(date);
     }
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         // Note: monthOfYear is 0-indexed
-        String date = "You picked the following date: "+dayOfMonth+"/"+(monthOfYear+1)+"/"+year;
+        String date = "You picked the following date: " + dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
         dateTextView.setText(date);
     }
-
 }
