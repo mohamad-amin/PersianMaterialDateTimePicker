@@ -25,35 +25,39 @@ import java.util.ArrayList;
  */
 public interface DatePickerController {
 
-    void onYearSelected(int year);
+  void onYearSelected(int year);
 
-    void onDaysOfMonthSelected(ArrayList<PersianCalendar> selectedDays);
+  void onDaysOfMonthSelected(ArrayList<PersianCalendar> selectedDays);
 
-    void registerOnDateChangedListener(MultiDatePickerDialog.OnDateChangedListener listener);
+  void registerOnDateChangedListener(MultiDatePickerDialog.OnDateChangedListener listener);
 
-    void unregisterOnDateChangedListener(MultiDatePickerDialog.OnDateChangedListener listener);
+  void unregisterOnDateChangedListener(MultiDatePickerDialog.OnDateChangedListener listener);
 
-    ArrayList<PersianCalendar> getSelectedDays();
+  ArrayList<PersianCalendar> getSelectedDays();
 
-    void setSelectedDays(ArrayList<PersianCalendar> selectedDays);
+  void setSelectedDays(ArrayList<PersianCalendar> selectedDays);
 
-    boolean isThemeDark();
-    
-    PersianCalendar[] getHighlightedDays();
+  boolean isThemeDark();
 
-    PersianCalendar[] getSelectableDays();
+  PersianCalendar[] getHighlightedDays();
 
-    int getFirstDayOfWeek();
+  PersianCalendar[] getSelectableDays();
 
-    int getMinYear();
+  int getFirstDayOfWeek();
 
-    int getMaxYear();
+  int getMinYear();
 
-    int getSelectedYear();
+  int getMaxYear();
 
-    PersianCalendar getMinDate();
+  int getSelectedYear();
 
-    PersianCalendar getMaxDate();
+  PersianCalendar getMinDate();
 
-    void tryVibrate();
+  PersianCalendar getMaxDate();
+
+  void tryVibrate();
+
+  void setTypeface(String fontName);
+
+  String getTypeface();
 }

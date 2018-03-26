@@ -20,200 +20,204 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.graphics.Paint.Align;
 import android.util.Log;
 import android.view.View;
 
 import com.mohamadamin.persianmaterialdatetimepicker.R;
+import com.mohamadamin.persianmaterialdatetimepicker.TypefaceHelper;
 import com.mohamadamin.persianmaterialdatetimepicker.Utils;
 
 /**
  * Draw the two smaller AM and PM circles next to where the larger circle will be.
  */
 public class AmPmCirclesView extends View {
-    private static final String TAG = "AmPmCirclesView";
+  private static final String TAG = "AmPmCirclesView";
 
-    // Alpha level for selected circle.
-    private static final int SELECTED_ALPHA = Utils.SELECTED_ALPHA;
-    private static final int SELECTED_ALPHA_THEME_DARK = Utils.SELECTED_ALPHA_THEME_DARK;
+  // Alpha level for selected circle.
+  private static final int SELECTED_ALPHA = Utils.SELECTED_ALPHA;
+  private static final int SELECTED_ALPHA_THEME_DARK = Utils.SELECTED_ALPHA_THEME_DARK;
 
-    private final Paint mPaint = new Paint();
-    private int mSelectedAlpha;
-    private int mTouchedColor;
-    private int mUnselectedColor;
-    private int mAmPmTextColor;
-    private int mAmPmSelectedTextColor;
-    private int mSelectedColor;
-    private float mCircleRadiusMultiplier;
-    private float mAmPmCircleRadiusMultiplier;
-    private String mAmText;
-    private String mPmText;
-    private boolean mIsInitialized;
+  private final Paint mPaint = new Paint();
+  private int mSelectedAlpha;
+  private int mTouchedColor;
+  private int mUnselectedColor;
+  private int mAmPmTextColor;
+  private int mAmPmSelectedTextColor;
+  private int mSelectedColor;
+  private float mCircleRadiusMultiplier;
+  private float mAmPmCircleRadiusMultiplier;
+  private String mAmText;
+  private String mPmText;
+  private boolean mIsInitialized;
 
-    private static final int AM = TimePickerDialog.AM;
-    private static final int PM = TimePickerDialog.PM;
+  private static final int AM = TimePickerDialog.AM;
+  private static final int PM = TimePickerDialog.PM;
 
-    private boolean mDrawValuesReady;
-    private int mAmPmCircleRadius;
-    private int mAmXCenter;
-    private int mPmXCenter;
-    private int mAmPmYCenter;
-    private int mAmOrPm;
-    private int mAmOrPmPressed;
+  private boolean mDrawValuesReady;
+  private int mAmPmCircleRadius;
+  private int mAmXCenter;
+  private int mPmXCenter;
+  private int mAmPmYCenter;
+  private int mAmOrPm;
+  private int mAmOrPmPressed;
+  private Context context;
+  private String fontName;
 
-    public AmPmCirclesView(Context context) {
-        super(context);
-        mIsInitialized = false;
+  public AmPmCirclesView(Context context, String fontName) {
+    super(context);
+    this.context = context;
+    mIsInitialized = false;
+    this.fontName = fontName;
+  }
+
+  public void initialize(Context context, int amOrPm, String fontName) {
+    if (mIsInitialized) {
+      Log.e(TAG, "AmPmCirclesView may only be initialized once.");
+      return;
+    }
+    this.fontName = fontName;
+
+    Resources res = context.getResources();
+    mUnselectedColor = res.getColor(R.color.mdtp_white);
+    mSelectedColor = res.getColor(R.color.mdtp_accent_color);
+    mTouchedColor = res.getColor(R.color.mdtp_accent_color_dark);
+    mAmPmTextColor = res.getColor(R.color.mdtp_ampm_text_color);
+    mAmPmSelectedTextColor = res.getColor(R.color.mdtp_white);
+    mSelectedAlpha = SELECTED_ALPHA;
+    mPaint.setTypeface(TypefaceHelper.get(context, fontName));
+    mPaint.setAntiAlias(true);
+    mPaint.setTextAlign(Align.CENTER);
+
+    mCircleRadiusMultiplier =
+      Float.parseFloat(res.getString(R.string.mdtp_circle_radius_multiplier));
+    mAmPmCircleRadiusMultiplier =
+      Float.parseFloat(res.getString(R.string.mdtp_ampm_circle_radius_multiplier));
+    mAmText = "قبل‌ازظهر";
+    mPmText = "بعدازظهر";
+
+    setAmOrPm(amOrPm);
+    mAmOrPmPressed = -1;
+
+    mIsInitialized = true;
+  }
+
+  /* package */ void setTheme(Context context, boolean themeDark) {
+    Resources res = context.getResources();
+    if (themeDark) {
+      mUnselectedColor = res.getColor(R.color.mdtp_circle_background_dark_theme);
+      mSelectedColor = res.getColor(R.color.mdtp_red);
+      mAmPmTextColor = res.getColor(R.color.mdtp_white);
+      mSelectedAlpha = SELECTED_ALPHA_THEME_DARK;
+    } else {
+      mUnselectedColor = res.getColor(R.color.mdtp_white);
+      mSelectedColor = res.getColor(R.color.mdtp_accent_color);
+      mAmPmTextColor = res.getColor(R.color.mdtp_ampm_text_color);
+      mSelectedAlpha = SELECTED_ALPHA;
+    }
+  }
+
+  public void setAmOrPm(int amOrPm) {
+    mAmOrPm = amOrPm;
+  }
+
+  public void setAmOrPmPressed(int amOrPmPressed) {
+    mAmOrPmPressed = amOrPmPressed;
+  }
+
+  /**
+   * Calculate whether the coordinates are touching the AM or PM circle.
+   */
+  public int getIsTouchingAmOrPm(float xCoord, float yCoord) {
+    if (!mDrawValuesReady) {
+      return -1;
     }
 
-    public void initialize(Context context, int amOrPm) {
-        if (mIsInitialized) {
-            Log.e(TAG, "AmPmCirclesView may only be initialized once.");
-            return;
-        }
+    int squaredYDistance = (int) ((yCoord - mAmPmYCenter) * (yCoord - mAmPmYCenter));
 
-        Resources res = context.getResources();
-        mUnselectedColor = res.getColor(R.color.mdtp_white);
-        mSelectedColor = res.getColor(R.color.mdtp_accent_color);
-        mTouchedColor = res.getColor(R.color.mdtp_accent_color_dark);
-        mAmPmTextColor = res.getColor(R.color.mdtp_ampm_text_color);
-        mAmPmSelectedTextColor = res.getColor(R.color.mdtp_white);
-        mSelectedAlpha = SELECTED_ALPHA;
-        String typefaceFamily = res.getString(R.string.mdtp_sans_serif);
-        Typeface tf = Typeface.create(typefaceFamily, Typeface.NORMAL);
-        mPaint.setTypeface(tf);
-        mPaint.setAntiAlias(true);
-        mPaint.setTextAlign(Align.CENTER);
-
-        mCircleRadiusMultiplier =
-                Float.parseFloat(res.getString(R.string.mdtp_circle_radius_multiplier));
-        mAmPmCircleRadiusMultiplier =
-                Float.parseFloat(res.getString(R.string.mdtp_ampm_circle_radius_multiplier));
-        mAmText = "قبل‌ازظهر";
-        mPmText = "بعدازظهر";
-
-        setAmOrPm(amOrPm);
-        mAmOrPmPressed = -1;
-
-        mIsInitialized = true;
+    int distanceToAmCenter =
+      (int) Math.sqrt((xCoord - mAmXCenter) * (xCoord - mAmXCenter) + squaredYDistance);
+    if (distanceToAmCenter <= mAmPmCircleRadius) {
+      return AM;
     }
 
-    /* package */ void setTheme(Context context, boolean themeDark) {
-        Resources res = context.getResources();
-        if (themeDark) {
-            mUnselectedColor = res.getColor(R.color.mdtp_circle_background_dark_theme);
-            mSelectedColor = res.getColor(R.color.mdtp_red);
-            mAmPmTextColor = res.getColor(R.color.mdtp_white);
-            mSelectedAlpha = SELECTED_ALPHA_THEME_DARK;
-        } else {
-            mUnselectedColor = res.getColor(R.color.mdtp_white);
-            mSelectedColor = res.getColor(R.color.mdtp_accent_color);
-            mAmPmTextColor = res.getColor(R.color.mdtp_ampm_text_color);
-            mSelectedAlpha = SELECTED_ALPHA;
-        }
+    int distanceToPmCenter =
+      (int) Math.sqrt((xCoord - mPmXCenter) * (xCoord - mPmXCenter) + squaredYDistance);
+    if (distanceToPmCenter <= mAmPmCircleRadius) {
+      return PM;
     }
 
-    public void setAmOrPm(int amOrPm) {
-        mAmOrPm = amOrPm;
+    // Neither was close enough.
+    return -1;
+  }
+
+  @Override
+  public void onDraw(Canvas canvas) {
+    int viewWidth = getWidth();
+    if (viewWidth == 0 || !mIsInitialized) {
+      return;
     }
 
-    public void setAmOrPmPressed(int amOrPmPressed) {
-        mAmOrPmPressed = amOrPmPressed;
+    if (!mDrawValuesReady) {
+      int layoutXCenter = getWidth() / 2;
+      int layoutYCenter = getHeight() / 2;
+      int circleRadius =
+        (int) (Math.min(layoutXCenter, layoutYCenter) * mCircleRadiusMultiplier);
+      mAmPmCircleRadius = (int) (circleRadius * mAmPmCircleRadiusMultiplier);
+      layoutYCenter += mAmPmCircleRadius * 0.75;
+      int textSize = mAmPmCircleRadius * 3 / 4;
+      mPaint.setTextSize(textSize);
+
+      // Line up the vertical center of the AM/PM circles with the bottom of the main circle.
+      mAmPmYCenter = layoutYCenter - mAmPmCircleRadius / 2 + circleRadius;
+      // Line up the horizontal edges of the AM/PM circles with the horizontal edges
+      // of the main circle.
+      mAmXCenter = layoutXCenter - circleRadius + mAmPmCircleRadius;
+      mPmXCenter = layoutXCenter + circleRadius - mAmPmCircleRadius;
+
+      mDrawValuesReady = true;
     }
 
-    /**
-     * Calculate whether the coordinates are touching the AM or PM circle.
-     */
-    public int getIsTouchingAmOrPm(float xCoord, float yCoord) {
-        if (!mDrawValuesReady) {
-            return -1;
-        }
+    // We'll need to draw either a lighter blue (for selection), a darker blue (for touching)
+    // or white (for not selected).
+    int amColor = mUnselectedColor;
+    int amAlpha = 255;
+    int amTextColor = mAmPmTextColor;
+    int pmColor = mUnselectedColor;
+    int pmAlpha = 255;
+    int pmTextColor = mAmPmTextColor;
 
-        int squaredYDistance = (int) ((yCoord - mAmPmYCenter)*(yCoord - mAmPmYCenter));
-
-        int distanceToAmCenter =
-                (int) Math.sqrt((xCoord - mAmXCenter)*(xCoord - mAmXCenter) + squaredYDistance);
-        if (distanceToAmCenter <= mAmPmCircleRadius) {
-            return AM;
-        }
-
-        int distanceToPmCenter =
-                (int) Math.sqrt((xCoord - mPmXCenter)*(xCoord - mPmXCenter) + squaredYDistance);
-        if (distanceToPmCenter <= mAmPmCircleRadius) {
-            return PM;
-        }
-
-        // Neither was close enough.
-        return -1;
+    if (mAmOrPm == AM) {
+      amColor = mSelectedColor;
+      amAlpha = mSelectedAlpha;
+      amTextColor = mAmPmSelectedTextColor;
+    } else if (mAmOrPm == PM) {
+      pmColor = mSelectedColor;
+      pmAlpha = mSelectedAlpha;
+      pmTextColor = mAmPmSelectedTextColor;
+    }
+    if (mAmOrPmPressed == AM) {
+      amColor = mTouchedColor;
+      amAlpha = mSelectedAlpha;
+    } else if (mAmOrPmPressed == PM) {
+      pmColor = mTouchedColor;
+      pmAlpha = mSelectedAlpha;
     }
 
-    @Override
-    public void onDraw(Canvas canvas) {
-        int viewWidth = getWidth();
-        if (viewWidth == 0 || !mIsInitialized) {
-            return;
-        }
+    // Draw the two circles.
+    mPaint.setColor(amColor);
+    mPaint.setAlpha(amAlpha);
+    canvas.drawCircle(mAmXCenter, mAmPmYCenter, mAmPmCircleRadius, mPaint);
+    mPaint.setColor(pmColor);
+    mPaint.setAlpha(pmAlpha);
+    canvas.drawCircle(mPmXCenter, mAmPmYCenter, mAmPmCircleRadius, mPaint);
 
-        if (!mDrawValuesReady) {
-            int layoutXCenter = getWidth() / 2;
-            int layoutYCenter = getHeight() / 2;
-            int circleRadius =
-                    (int) (Math.min(layoutXCenter, layoutYCenter) * mCircleRadiusMultiplier);
-            mAmPmCircleRadius = (int) (circleRadius * mAmPmCircleRadiusMultiplier);
-            layoutYCenter += mAmPmCircleRadius*0.75;
-            int textSize = mAmPmCircleRadius * 3 / 4;
-            mPaint.setTextSize(textSize);
-
-            // Line up the vertical center of the AM/PM circles with the bottom of the main circle.
-            mAmPmYCenter = layoutYCenter - mAmPmCircleRadius / 2 + circleRadius;
-            // Line up the horizontal edges of the AM/PM circles with the horizontal edges
-            // of the main circle.
-            mAmXCenter = layoutXCenter - circleRadius + mAmPmCircleRadius;
-            mPmXCenter = layoutXCenter + circleRadius - mAmPmCircleRadius;
-
-            mDrawValuesReady = true;
-        }
-
-        // We'll need to draw either a lighter blue (for selection), a darker blue (for touching)
-        // or white (for not selected).
-        int amColor = mUnselectedColor;
-        int amAlpha = 255;
-        int amTextColor = mAmPmTextColor;
-        int pmColor = mUnselectedColor;
-        int pmAlpha = 255;
-        int pmTextColor = mAmPmTextColor;
-
-        if (mAmOrPm == AM) {
-            amColor = mSelectedColor;
-            amAlpha = mSelectedAlpha;
-            amTextColor = mAmPmSelectedTextColor;
-        } else if (mAmOrPm == PM) {
-            pmColor = mSelectedColor;
-            pmAlpha = mSelectedAlpha;
-            pmTextColor = mAmPmSelectedTextColor;
-        }
-        if (mAmOrPmPressed == AM) {
-            amColor = mTouchedColor;
-            amAlpha = mSelectedAlpha;
-        } else if (mAmOrPmPressed == PM) {
-            pmColor = mTouchedColor;
-            pmAlpha = mSelectedAlpha;
-        }
-
-        // Draw the two circles.
-        mPaint.setColor(amColor);
-        mPaint.setAlpha(amAlpha);
-        canvas.drawCircle(mAmXCenter, mAmPmYCenter, mAmPmCircleRadius, mPaint);
-        mPaint.setColor(pmColor);
-        mPaint.setAlpha(pmAlpha);
-        canvas.drawCircle(mPmXCenter, mAmPmYCenter, mAmPmCircleRadius, mPaint);
-
-        // Draw the AM/PM texts on top.
-        mPaint.setColor(amTextColor);
-        int textYCenter = mAmPmYCenter - (int) (mPaint.descent() + mPaint.ascent()) / 2;
-        canvas.drawText(mAmText, mAmXCenter, textYCenter, mPaint);
-        mPaint.setColor(pmTextColor);
-        canvas.drawText(mPmText, mPmXCenter, textYCenter, mPaint);
-    }
+    // Draw the AM/PM texts on top.
+    mPaint.setColor(amTextColor);
+    int textYCenter = mAmPmYCenter - (int) (mPaint.descent() + mPaint.ascent()) / 2;
+    canvas.drawText(mAmText, mAmXCenter, textYCenter, mPaint);
+    mPaint.setColor(pmTextColor);
+    canvas.drawText(mPmText, mPmXCenter, textYCenter, mPaint);
+    mPaint.setTypeface(TypefaceHelper.get(context, fontName));
+  }
 }

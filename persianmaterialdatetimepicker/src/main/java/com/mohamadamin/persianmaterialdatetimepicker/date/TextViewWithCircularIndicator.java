@@ -16,6 +16,7 @@
 
 package com.mohamadamin.persianmaterialdatetimepicker.date;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -24,7 +25,6 @@ import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import com.mohamadamin.persianmaterialdatetimepicker.R;
 import com.mohamadamin.persianmaterialdatetimepicker.utils.LanguageUtils;
@@ -32,7 +32,7 @@ import com.mohamadamin.persianmaterialdatetimepicker.utils.LanguageUtils;
 /**
  * A text view which, when pressed or activated, displays a colored circle around the text.
  */
-public class TextViewWithCircularIndicator extends TextView {
+public class TextViewWithCircularIndicator extends android.support.v7.widget.AppCompatTextView {
 
     private static final int SELECTED_CIRCLE_ALPHA = 255;
 
@@ -79,6 +79,7 @@ public class TextViewWithCircularIndicator extends TextView {
         super.onDraw(canvas);
     }
 
+    @SuppressLint("GetContentDescriptionOverride")
     @Override
     public CharSequence getContentDescription() {
         String itemText = LanguageUtils.getPersianNumbers(getText().toString());
