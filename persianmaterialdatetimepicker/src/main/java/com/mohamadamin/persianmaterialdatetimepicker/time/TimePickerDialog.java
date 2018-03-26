@@ -465,7 +465,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
   public void onValueSelected(int pickerIndex, int newValue, boolean autoAdvance) {
     if (pickerIndex == HOUR_INDEX) {
       setHour(newValue, false);
-      String announcement = String.format("%d", newValue);
+      String announcement = String.format(Locale.getDefault(),"%d", newValue);
       if (mAllowAutoAdvance && autoAdvance) {
         setCurrentItemShowing(MINUTE_INDEX, true, true, false);
         announcement += ". " + mSelectMinutes;
@@ -509,7 +509,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
       }
     }
 
-    String text = LanguageUtils.getPersianNumbers(String.format(format, value));
+    String text = LanguageUtils.getPersianNumbers(String.format(Locale.getDefault(),format, value));
     mHourView.setText(text);
     mHourSpaceView.setText(text);
     if (announce) {
@@ -606,7 +606,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
           } else if (deleted == getAmOrPmKeyCode(PM)) {
             deletedKeyStr = mPmText;
           } else {
-            deletedKeyStr = String.format("%d", getValFromKeyCode(deleted)); //TODO
+            deletedKeyStr = String.format(Locale.getDefault(),"%d", getValFromKeyCode(deleted)); //TODO
           }
           Utils.tryAccessibilityAnnounce(mTimePicker,
             String.format(mDeletedKeyFormat, deletedKeyStr));
@@ -671,7 +671,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
     }
 
     int val = getValFromKeyCode(keyCode);
-    Utils.tryAccessibilityAnnounce(mTimePicker, String.format("%d", val));
+    Utils.tryAccessibilityAnnounce(mTimePicker, String.format(Locale.getDefault(),"%d", val));
     // Automatically fill in 0's if AM or PM was legally entered.
     if (isTypedTimeFullyLegal()) {
       if (!mIs24HourMode && mTypedTimes.size() <= 3) {

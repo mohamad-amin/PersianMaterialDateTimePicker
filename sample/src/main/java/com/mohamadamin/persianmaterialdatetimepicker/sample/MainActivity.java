@@ -122,12 +122,11 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onDateSet(MultiDatePickerDialog view, ArrayList<PersianCalendar> selectedDays) {
-        String date = "You picked the following dates:\n\t";
+        StringBuilder date = new StringBuilder("You picked the following dates:\n\t");
         for (PersianCalendar calendar : selectedDays) {
-            date += calendar.getPersianDay() + "/" + (calendar.getPersianMonth() + 1)
-                    + "/" + calendar.getPersianYear() + "\n\t";
+            date.append(calendar.getPersianDay()).append("/").append(calendar.getPersianMonth() + 1).append("/").append(calendar.getPersianYear()).append("\n\t");
         }
-        multiDateTextView.setText(date);
+        multiDateTextView.setText(date.toString());
     }
 
     @Override

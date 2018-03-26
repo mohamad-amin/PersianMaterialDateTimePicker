@@ -43,6 +43,7 @@ import com.mohamadamin.persianmaterialdatetimepicker.R;
 import com.mohamadamin.persianmaterialdatetimepicker.utils.LanguageUtils;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * The primary layout to hold the circular picker, and the am/pm buttons. This view will measure
@@ -210,10 +211,10 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
     String[] minutesTexts = new String[12];
     for (int i = 0; i < 12; i++) {
       hoursTexts[i] = LanguageUtils.getPersianNumbers(
-        is24HourMode ? String.format("%02d", hours_24[i]) : String.format("%d", hours[i])
+        is24HourMode ? String.format(Locale.getDefault(),"%02d", hours_24[i]) : String.format(Locale.getDefault(),"%d", hours[i])
       );
-      innerHoursTexts[i] = LanguageUtils.getPersianNumbers(String.format("%d", hours[i]));
-      minutesTexts[i] = LanguageUtils.getPersianNumbers(String.format("%02d", minutes[i]));
+      innerHoursTexts[i] = LanguageUtils.getPersianNumbers(String.format(Locale.getDefault(),"%d", hours[i]));
+      minutesTexts[i] = LanguageUtils.getPersianNumbers(String.format(Locale.getDefault(),"%02d", minutes[i]));
     }
     mHourRadialTextsView.initialize(res,
       hoursTexts, (is24HourMode ? innerHoursTexts : null), mHideAmPm, true,fontName);

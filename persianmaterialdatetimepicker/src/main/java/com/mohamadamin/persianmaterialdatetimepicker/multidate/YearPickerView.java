@@ -35,6 +35,7 @@ import com.mohamadamin.persianmaterialdatetimepicker.utils.LanguageUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Displays a selectable list of years.
@@ -73,7 +74,7 @@ public class YearPickerView extends ListView implements OnItemClickListener, OnD
     private void init(Context context) {
         ArrayList<String> years = new ArrayList<>();
         for (int year = mController.getMinYear(); year <= mController.getMaxYear(); year++) {
-            years.add(String.format("%d", year));
+            years.add(String.format(Locale.getDefault(),"%d", year));
         }
         years = LanguageUtils.getPersianNumbers(years);
         mAdapter = new YearAdapter(context, R.layout.mdtp_year_label_text_view, years);

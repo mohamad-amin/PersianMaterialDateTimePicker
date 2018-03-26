@@ -24,6 +24,8 @@ import android.util.AttributeSet;
 import com.mohamadamin.persianmaterialdatetimepicker.TypefaceHelper;
 import com.mohamadamin.persianmaterialdatetimepicker.utils.LanguageUtils;
 
+import java.util.Locale;
+
 public class SimpleMonthView extends MonthView {
   DatePickerController controller;
 
@@ -59,6 +61,6 @@ public class SimpleMonthView extends MonthView {
     }
 
     canvas.drawText(LanguageUtils.
-      getPersianNumbers(String.format("%d", day)), x, y, mMonthNumPaint);
+      getPersianNumbers(String.format(Locale.getDefault(), "%d", day)), x, y, mMonthNumPaint);
   }
 }
