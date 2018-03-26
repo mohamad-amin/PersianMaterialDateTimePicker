@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':persianmaterialdatetimepicker')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':persianmaterialdatetimepicker')
     implementation 'com.android.support:appcompat-v7:27.1.0'
 }
