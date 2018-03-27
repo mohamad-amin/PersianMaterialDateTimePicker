@@ -118,12 +118,15 @@
     <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7-27.1.0" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:viewmodel-1.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-compat-27.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-v4-27.1.0" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:livedata-core-1.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-media-compat-27.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-vector-drawable-27.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-annotations:27.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-core-utils-27.1.0" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.core:common:1.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-core-ui-27.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.dcendents:android-maven-gradle-plugin:2.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime-1.1.0" level="project" />
   </component>
 </module>
