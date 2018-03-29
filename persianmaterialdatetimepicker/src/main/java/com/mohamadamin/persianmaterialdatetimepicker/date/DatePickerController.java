@@ -23,31 +23,35 @@ import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
  */
 public interface DatePickerController {
 
-    void onYearSelected(int year);
+  void onYearSelected(int year);
 
-    void onDayOfMonthSelected(int year, int month, int day);
+  void onDayOfMonthSelected(int year, int month, int day);
 
-    void registerOnDateChangedListener(DatePickerDialog.OnDateChangedListener listener);
+  void registerOnDateChangedListener(DatePickerDialog.OnDateChangedListener listener);
 
-    void unregisterOnDateChangedListener(DatePickerDialog.OnDateChangedListener listener);
+  void unregisterOnDateChangedListener(DatePickerDialog.OnDateChangedListener listener);
 
-    MonthAdapter.CalendarDay getSelectedDay();
+  MonthAdapter.CalendarDay getSelectedDay();
 
-    boolean isThemeDark();
-    
-    PersianCalendar[] getHighlightedDays();
+  boolean isThemeDark();
 
-    PersianCalendar[] getSelectableDays();
+  PersianCalendar[] getHighlightedDays();
 
-    int getFirstDayOfWeek();
+  PersianCalendar[] getSelectableDays();
 
-    int getMinYear();
+  int getFirstDayOfWeek();
 
-    int getMaxYear();
+  int getMinYear();
 
-    PersianCalendar getMinDate();
+  int getMaxYear();
 
-    PersianCalendar getMaxDate();
+  PersianCalendar getMinDate();
 
-    void tryVibrate();
+  PersianCalendar getMaxDate();
+
+  void tryVibrate();
+
+  void setTypeface(String fontName);
+
+  String getTypeface();
 }

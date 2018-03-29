@@ -70,4 +70,6 @@
 
     <!-- DO NOT TRANSLATE -->
     <string name="mdtp_day_of_week_label_typeface" translatable="false">sans-serif</string>
+    <string name="am_label">قبل‌ازظهر</string>
+    <string name="pm_label">بعدازظهر</string>
 </resources>

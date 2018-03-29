@@ -40,15 +40,15 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void initializeViews() {
-        timeTextView = (TextView) findViewById(R.id.time_textview);
-        dateTextView = (TextView) findViewById(R.id.date_textview);
-        multiDateTextView = (TextView) findViewById(R.id.multi_date_textview);
-        timeButton = (Button) findViewById(R.id.time_button);
-        dateButton = (Button) findViewById(R.id.date_button);
-        multiDataButton = (Button) findViewById(R.id.multi_date_button);
-        mode24Hours = (CheckBox) findViewById(R.id.mode_24_hours);
-        modeDarkTime = (CheckBox) findViewById(R.id.mode_dark_time);
-        modeDarkDate = (CheckBox) findViewById(R.id.mode_dark_date);
+        timeTextView = findViewById(R.id.time_textview);
+        dateTextView = findViewById(R.id.date_textview);
+        multiDateTextView = findViewById(R.id.multi_date_textview);
+        timeButton = findViewById(R.id.time_button);
+        dateButton = findViewById(R.id.date_button);
+        multiDataButton = findViewById(R.id.multi_date_button);
+        mode24Hours = findViewById(R.id.mode_24_hours);
+        modeDarkTime = findViewById(R.id.mode_dark_time);
+        modeDarkDate = findViewById(R.id.mode_dark_date);
     }
 
     private void handleClicks() {
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onClick(View view) {
+        String fontName = "DroidNaskh-Regular";
         switch (view.getId()) {
             case R.id.time_button: {
                 PersianCalendar now = new PersianCalendar();
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements
                         mode24Hours.isChecked()
                 );
                 tpd.setThemeDark(modeDarkTime.isChecked());
+                tpd.setTypeface(fontName);
                 tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
@@ -87,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements
                         now.getPersianDay()
                 );
                 dpd.setThemeDark(modeDarkDate.isChecked());
+                dpd.setTypeface(fontName);
                 dpd.show(getFragmentManager(), DATEPICKER);
                 break;
             }
@@ -101,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements
                 mdpd.setMaxDate(pc[29]);
                 //mdpd.setSelectableDays(pc);
                 mdpd.setThemeDark(modeDarkDate.isChecked());
+                mdpd.setTypeface(fontName);
                 mdpd.show(getFragmentManager(), MULTIDATEPICKER);
                 break;
             default:
@@ -118,12 +122,11 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onDateSet(MultiDatePickerDialog view, ArrayList<PersianCalendar> selectedDays) {
-        String date = "You picked the following dates:\n\t";
+        StringBuilder date = new StringBuilder("You picked the following dates:\n\t");
         for (PersianCalendar calendar : selectedDays) {
-            date += calendar.getPersianDay() + "/" + (calendar.getPersianMonth() + 1)
-                    + "/" + calendar.getPersianYear() + "\n\t";
+            date.append(calendar.getPersianDay()).append("/").append(calendar.getPersianMonth() + 1).append("/").append(calendar.getPersianYear()).append("\n\t");
         }
-        multiDateTextView.setText(date);
+        multiDateTextView.setText(date.toString());
     }
 
     @Override
