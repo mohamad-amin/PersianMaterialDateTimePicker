@@ -365,8 +365,7 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
 
     @Override
     public void onDateChanged() {
-        PersianCalendar persianCalendar = new PersianCalendar(mController.getSelectedDays()
-                .get(mController.getSelectedDays().size() - 1).getTimeInMillis());
+        PersianCalendar persianCalendar = new PersianCalendar();
         persianCalendar.setPersianDate(mController.getSelectedYear()
                 , persianCalendar.getPersianMonth(), persianCalendar.getPersianDay());
         goTo(new MonthAdapter.CalendarDay(persianCalendar), false, true, true);

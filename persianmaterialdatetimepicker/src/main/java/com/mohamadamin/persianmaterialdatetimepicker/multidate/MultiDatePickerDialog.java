@@ -162,7 +162,7 @@ public class MultiDatePickerDialog extends DialogFragment implements
     if (selectedDays != null) {
       setSelectedDays(selectedDays);
     } else {
-      mSelectedDaysCalendars.add(new PersianCalendar(System.currentTimeMillis()));
+      mSelectedDaysCalendars.add(new PersianCalendar());
     }
     mSelectedYear = mSelectedDaysCalendars.get(mSelectedDaysCalendars.size() - 1).getPersianYear();
     mThemeDark = false;
