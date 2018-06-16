@@ -183,6 +183,7 @@ public abstract class MonthView extends View {
   protected int mHighlightedDayTextColor;
   protected int mDisabledDayTextColor;
   protected int mMonthTitleColor;
+  private float rightSpace=30;
 
   public MonthView(Context context) {
     this(context, null, null);
@@ -455,10 +456,10 @@ public abstract class MonthView extends View {
   protected void drawMonthDayLabels(Canvas canvas) {
     int y = getMonthHeaderSize() - (MONTH_DAY_LABEL_TEXT_SIZE / 2);
     int dayWidthHalf = (mWidth - mEdgePadding * 2) / (mNumDays * 2);
-
+    float firstX = (2 * (mNumDays - 1) + 1) * dayWidthHalf + rightSpace;
     for (int i = 0; i < mNumDays; i++) {
       int calendarDay = (i + mWeekStart) % mNumDays;
-      int x = (2 * i + 1) * dayWidthHalf + mEdgePadding;
+      int x = (int) (firstX - (2 * i + 1) * dayWidthHalf + mEdgePadding);
       mDayLabelCalendar.set(Calendar.DAY_OF_WEEK, calendarDay);
       String localWeekDisplayName = mDayLabelCalendar.getPersianWeekDayName(); // TODO: RTLize
       String weekString = localWeekDisplayName.substring(0, 1);
@@ -477,8 +478,9 @@ public abstract class MonthView extends View {
       + getMonthHeaderSize();
     final float dayWidthHalf = (mWidth - mEdgePadding * 2) / (mNumDays * 2.0f);
     int j = findDayOffset();
+    float firstX = (2 * (mNumDays - 1) + 1) * dayWidthHalf + rightSpace;
     for (int dayNumber = 1; dayNumber <= mNumCells; dayNumber++) {
-      final int x = (int) ((2 * j + 1) * dayWidthHalf + mEdgePadding);
+      final int x = (int) (firstX - (((2 * j + 1) * dayWidthHalf + mEdgePadding)));
 
       int yRelativeToDay = (mRowHeight + MINI_DAY_NUMBER_TEXT_SIZE) / 2 - DAY_SEPARATOR_WIDTH;
 
@@ -549,7 +551,7 @@ public abstract class MonthView extends View {
     }
     // Selection is (x - start) / (pixels/day) == (x -s) * day / pixels
     int row = (int) (y - getMonthHeaderSize()) / mRowHeight;
-    int column = (int) ((x - dayStart) * mNumDays / (mWidth - dayStart - mEdgePadding));
+    int column = (int) (mNumDays - ((x - dayStart) * mNumDays) / (mWidth - dayStart - mEdgePadding));
 
     int day = column - findDayOffset() + 1;
     day += row * mNumDays;
