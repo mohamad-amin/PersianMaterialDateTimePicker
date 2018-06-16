@@ -62,7 +62,7 @@ public class AmPmCirclesView extends View {
   private int mAmOrPm;
   private int mAmOrPmPressed;
   private Context context;
-  private String fontName;
+  private String fontName="DroidNaskh-Regular";
 
   public AmPmCirclesView(Context context, String fontName) {
     super(context);
