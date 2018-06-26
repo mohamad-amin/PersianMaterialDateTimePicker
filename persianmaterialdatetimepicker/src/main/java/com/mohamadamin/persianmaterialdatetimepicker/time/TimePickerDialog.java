@@ -118,7 +118,7 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
   private String mMinutePickerDescription;
   private String mSelectMinutes;
 
-  private String fontName;
+  private String fontName="DroidNaskh-Regular";
 
   /**
    * The callback interface used to indicate the user is done filling in

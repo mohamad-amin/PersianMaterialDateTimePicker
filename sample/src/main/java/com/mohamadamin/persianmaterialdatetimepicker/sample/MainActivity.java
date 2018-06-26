@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements
                 MultiDatePickerDialog mdpd = MultiDatePickerDialog.newInstance(MainActivity.this, null);
                 PersianCalendar[] pc = new PersianCalendar[30];
                 for (int i = 0; i < pc.length; i++) {
-                    pc[i] = new PersianCalendar(System.currentTimeMillis());
+                    pc[i] = new PersianCalendar();
                     pc[i].add(Calendar.DAY_OF_YEAR, i);
                 }
                 mdpd.setMinDate(pc[0]);

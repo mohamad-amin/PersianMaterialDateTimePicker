@@ -120,7 +120,7 @@ public class MultiDatePickerDialog extends DialogFragment implements
   private String mYearPickerDescription;
   private String mSelectYear;
 
-  private String fontName;
+  private String fontName="DroidNaskh-Regular";
 
   /**
    * The callback used to indicate the user is done filling in the date.
@@ -162,7 +162,7 @@ public class MultiDatePickerDialog extends DialogFragment implements
     if (selectedDays != null) {
       setSelectedDays(selectedDays);
     } else {
-      mSelectedDaysCalendars.add(new PersianCalendar(System.currentTimeMillis()));
+      mSelectedDaysCalendars.add(new PersianCalendar());
     }
     mSelectedYear = mSelectedDaysCalendars.get(mSelectedDaysCalendars.size() - 1).getPersianYear();
     mThemeDark = false;

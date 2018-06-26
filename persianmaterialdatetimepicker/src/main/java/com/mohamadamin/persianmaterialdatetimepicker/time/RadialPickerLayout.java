@@ -98,7 +98,7 @@ public class RadialPickerLayout extends FrameLayout implements OnTouchListener {
   private AnimatorSet mTransition;
   private Handler mHandler = new Handler();
 
-  private String fontName;
+  private String fontName="DroidNaskh-Regular";
 
   public interface OnValueSelectedListener {
     void onValueSelected(int pickerIndex, int newValue, boolean autoAdvance);

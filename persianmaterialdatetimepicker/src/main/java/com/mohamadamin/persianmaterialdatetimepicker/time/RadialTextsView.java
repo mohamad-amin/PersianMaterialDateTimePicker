@@ -25,8 +25,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.graphics.Paint.Align;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.View;
 
@@ -77,7 +77,7 @@ public class RadialTextsView extends View {
   ObjectAnimator mReappearAnimator;
   private InvalidateUpdateListener mInvalidateUpdateListener;
   private Context context;
-  private String fontName;
+  private String fontName="DroidNaskh-Regular";
 
   public RadialTextsView(Context context, String fontName) {
     super(context);
