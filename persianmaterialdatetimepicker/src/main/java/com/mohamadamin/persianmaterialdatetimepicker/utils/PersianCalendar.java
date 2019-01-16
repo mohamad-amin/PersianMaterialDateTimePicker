@@ -163,7 +163,7 @@ public class PersianCalendar extends GregorianCalendar {
   }
 
   private String formatToMilitary(int i) {
-    return (i < 9) ? "0" + i : String.valueOf(i);
+    return (i <= 9) ? "0" + i : String.valueOf(i);
   }
 
   /**
