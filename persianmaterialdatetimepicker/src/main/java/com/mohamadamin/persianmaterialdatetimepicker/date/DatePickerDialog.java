@@ -121,6 +121,9 @@ public class DatePickerDialog extends DialogFragment implements
 
   private String fontName="DroidNaskh-Regular";
 
+  //Ok and cancel button color
+  private static int okColor, cancelColor;
+
   /**
    * The callback used to indicate the user is done filling in the date.
    */
@@ -160,6 +163,21 @@ public class DatePickerDialog extends DialogFragment implements
                                              int dayOfMonth) {
     DatePickerDialog ret = new DatePickerDialog();
     ret.initialize(callBack, year, monthOfYear, dayOfMonth);
+    return ret;
+  }
+
+  public static DatePickerDialog newInstance(OnDateSetListener callBack, int year,
+                                             int monthOfYear,
+                                             int dayOfMonth,
+                                             int btnOkColor,
+                                             int btnCancelColor) {
+    DatePickerDialog ret = new DatePickerDialog();
+    ret.initialize(callBack, year, monthOfYear, dayOfMonth);
+
+    //Setting custom colors to values
+    okColor = btnOkColor;
+    cancelColor = btnCancelColor;
+
     return ret;
   }
 
@@ -227,6 +245,11 @@ public class DatePickerDialog extends DialogFragment implements
     Button cancelButton = view.findViewById(R.id.cancel);
     okButton.setTypeface(TypefaceHelper.get(activity, fontName));
     cancelButton.setTypeface(TypefaceHelper.get(activity, fontName));
+
+    //Setting custom colors to views
+    okButton.setBackgroundColor(okColor);
+    cancelButton.setBackgroundColor(cancelColor);
+
     if (mDayOfWeekTextView != null) {
       mDayOfWeekTextView.setTypeface(TypefaceHelper.get(activity, fontName));
     }
