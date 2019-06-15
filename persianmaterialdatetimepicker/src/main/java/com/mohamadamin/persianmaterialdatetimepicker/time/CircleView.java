@@ -48,8 +48,8 @@ public class CircleView extends View {
         super(context);
 
         Resources res = context.getResources();
-        mCircleColor = res.getColor(R.color.mdtp_circle_color);
-        mDotColor = res.getColor(R.color.mdtp_numbers_text_color);
+        mCircleColor = res.getColor(R.color.famdtp_circle_color);
+        mDotColor = res.getColor(R.color.famdtp_numbers_text_color);
         mPaint.setAntiAlias(true);
 
         mIsInitialized = false;
@@ -65,12 +65,12 @@ public class CircleView extends View {
         mIs24HourMode = is24HourMode;
         if (is24HourMode) {
             mCircleRadiusMultiplier = Float.parseFloat(
-                    res.getString(R.string.mdtp_circle_radius_multiplier_24HourMode));
+                    res.getString(R.string.famdtp_circle_radius_multiplier_24HourMode));
         } else {
             mCircleRadiusMultiplier = Float.parseFloat(
-                    res.getString(R.string.mdtp_circle_radius_multiplier));
+                    res.getString(R.string.famdtp_circle_radius_multiplier));
             mAmPmCircleRadiusMultiplier =
-                    Float.parseFloat(res.getString(R.string.mdtp_ampm_circle_radius_multiplier));
+                    Float.parseFloat(res.getString(R.string.famdtp_ampm_circle_radius_multiplier));
         }
 
         mIsInitialized = true;
@@ -79,11 +79,11 @@ public class CircleView extends View {
     /* package */ void setTheme(Context context, boolean dark) {
         Resources res = context.getResources();
         if (dark) {
-            mCircleColor = res.getColor(R.color.mdtp_circle_background_dark_theme);
-            mDotColor = res.getColor(R.color.mdtp_white);
+            mCircleColor = res.getColor(R.color.famdtp_circle_background_dark_theme);
+            mDotColor = res.getColor(R.color.famdtp_white);
         } else {
-            mCircleColor = res.getColor(R.color.mdtp_circle_color);
-            mDotColor = res.getColor(R.color.mdtp_numbers_text_color);
+            mCircleColor = res.getColor(R.color.famdtp_circle_color);
+            mDotColor = res.getColor(R.color.famdtp_numbers_text_color);
         }
     }
 

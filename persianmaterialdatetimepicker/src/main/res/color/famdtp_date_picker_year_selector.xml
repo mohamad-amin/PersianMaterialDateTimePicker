@@ -13,11 +13,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<com.mohamadamin.persianmaterialdatetimepicker.date.AccessibleDateAnimator
-     xmlns:android="http://schemas.android.com/apk/res/android"
-     android:id="@+id/animator"
-     android:layout_width="@dimen/mdtp_date_picker_component_width"
-     android:layout_height="@dimen/mdtp_date_picker_view_animator_height"
-     android:gravity="center"
-     android:paddingLeft="8dp"
-     android:paddingRight="8dp" />
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:color="@color/famdtp_accent_color" android:state_pressed="true" />
+    <item android:color="@color/famdtp_white" android:state_selected="true" />
+    <item android:state_pressed="false" android:state_selected="false" android:color="@color/famdtp_date_picker_text_normal" />
+
+</selector>

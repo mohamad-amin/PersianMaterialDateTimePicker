@@ -15,11 +15,9 @@
 -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_focused="true"
-          android:state_pressed="false"
-          android:drawable="@color/mdtp_red_focused" />
+          android:state_pressed="false" android:drawable="@color/famdtp_red_focused" />
 
-    <item android:state_pressed="true"
-          android:drawable="@color/mdtp_red" />
+    <item android:state_pressed="true" android:drawable="@color/famdtp_red" />
 
-    <item android:drawable="@color/mdtp_light_gray" />
+    <item android:drawable="@color/famdtp_light_gray" />
 </selector>

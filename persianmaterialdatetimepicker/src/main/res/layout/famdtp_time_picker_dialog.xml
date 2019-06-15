@@ -19,14 +19,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/mdtp_background_color"
+    android:background="@color/famdtp_background_color"
     android:focusable="true" >
     <LinearLayout
         android:id="@+id/time_display_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/mdtp_accent_color" >
+        android:background="@color/famdtp_accent_color">
 
         <TextView
             android:id="@+id/time_picker_header"
@@ -35,27 +35,27 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:includeFontPadding="false"
-            android:textSize="@dimen/mdtp_time_picker_header_text_size"
+            android:background="@color/famdtp_accent_color_dark"
             android:singleLine="true"
             android:padding="8dp"
             android:textAllCaps="true"
-            android:textColor="@color/mdtp_white"
-            android:background="@color/mdtp_accent_color_dark"/>
+            android:textColor="@color/famdtp_white"
+            android:textSize="@dimen/famdtp_time_picker_header_text_size" />
 
         <include
-            layout="@layout/mdtp_time_header_label"
+            layout="@layout/famdtp_time_header_label"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/mdtp_header_height"
+            android:layout_height="@dimen/famdtp_header_height"
             android:layout_gravity="center" />
     </LinearLayout>
     <com.mohamadamin.persianmaterialdatetimepicker.time.RadialPickerLayout
         android:id="@+id/time_picker"
-        android:layout_height="@dimen/mdtp_time_picker_height"
-        android:layout_width="@dimen/mdtp_picker_dimen"
+        android:layout_width="@dimen/famdtp_picker_dimen"
+        android:layout_height="@dimen/famdtp_time_picker_height"
         android:layout_gravity="center"
-        android:background="@color/mdtp_circle_background"
+        android:background="@color/famdtp_circle_background"
         android:focusable="true"
         android:focusableInTouchMode="true" />
 
-    <include layout="@layout/mdtp_done_button" />
+    <include layout="@layout/famdtp_done_button" />
 </LinearLayout>

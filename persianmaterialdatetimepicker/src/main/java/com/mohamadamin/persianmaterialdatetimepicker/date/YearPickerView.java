@@ -58,8 +58,8 @@ public class YearPickerView extends ListView implements OnItemClickListener, OnD
                 LayoutParams.WRAP_CONTENT);
         setLayoutParams(frame);
         Resources res = context.getResources();
-        mViewSize = res.getDimensionPixelOffset(R.dimen.mdtp_date_picker_view_animator_height);
-        mChildSize = res.getDimensionPixelOffset(R.dimen.mdtp_year_label_height);
+        mViewSize = res.getDimensionPixelOffset(R.dimen.famdtp_date_picker_view_animator_height);
+        mChildSize = res.getDimensionPixelOffset(R.dimen.famdtp_year_label_height);
         setVerticalFadingEdgeEnabled(true);
         setFadingEdgeLength(mChildSize / 3);
         init(context);
@@ -75,7 +75,7 @@ public class YearPickerView extends ListView implements OnItemClickListener, OnD
             years.add(String.format("%d", year));
         }
         years = LanguageUtils.getPersianNumbers(years);
-        mAdapter = new YearAdapter(context, R.layout.mdtp_year_label_text_view, years);
+        mAdapter = new YearAdapter(context, R.layout.famdtp_year_label_text_view, years);
         setAdapter(mAdapter);
     }
 

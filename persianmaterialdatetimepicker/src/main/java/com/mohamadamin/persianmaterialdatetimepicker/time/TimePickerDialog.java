@@ -222,18 +222,18 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-    View view = inflater.inflate(R.layout.mdtp_time_picker_dialog, null);
+    View view = inflater.inflate(R.layout.famdtp_time_picker_dialog, null);
     final Activity activity = getActivity();
     KeyboardListener keyboardListener = new KeyboardListener();
     view.findViewById(R.id.time_picker_dialog).setOnKeyListener(keyboardListener);
 
     Resources res = getResources();
-    mHourPickerDescription = res.getString(R.string.mdtp_hour_picker_description);
-    mSelectHours = res.getString(R.string.mdtp_select_hours);
-    mMinutePickerDescription = res.getString(R.string.mdtp_minute_picker_description);
-    mSelectMinutes = res.getString(R.string.mdtp_select_minutes);
-    mSelectedColor = res.getColor(R.color.mdtp_white);
-    mUnselectedColor = res.getColor(R.color.mdtp_accent_color_focused);
+    mHourPickerDescription = res.getString(R.string.famdtp_hour_picker_description);
+    mSelectHours = res.getString(R.string.famdtp_select_hours);
+    mMinutePickerDescription = res.getString(R.string.famdtp_minute_picker_description);
+    mSelectMinutes = res.getString(R.string.famdtp_select_minutes);
+    mSelectedColor = res.getColor(R.color.famdtp_white);
+    mUnselectedColor = res.getColor(R.color.famdtp_accent_color_focused);
 
     mHourView = view.findViewById(R.id.hours);
     mHourView.setOnKeyListener(keyboardListener);
@@ -344,8 +344,8 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
     setMinute(mInitialMinute);
 
     // Set up for keyboard mode.
-    mDoublePlaceholderText = res.getString(R.string.mdtp_time_placeholder);
-    mDeletedKeyFormat = res.getString(R.string.mdtp_deleted_key);
+    mDoublePlaceholderText = res.getString(R.string.famdtp_time_placeholder);
+    mDeletedKeyFormat = res.getString(R.string.famdtp_deleted_key);
     mPlaceholderText = mDoublePlaceholderText.charAt(0);
     mAmKeyCode = mPmKeyCode = -1;
     generateLegalTimesTree();
@@ -367,21 +367,21 @@ public class TimePickerDialog extends DialogFragment implements OnValueSelectedL
     // Set the theme at the end so that the initialize()s above don't counteract the theme.
     mTimePicker.setTheme(getActivity().getApplicationContext(), mThemeDark);
     // Prepare some colors to use.
-    int white = res.getColor(R.color.mdtp_white);
-    int accent = res.getColor(R.color.mdtp_accent_color);
-    int circleBackground = res.getColor(R.color.mdtp_circle_background);
-    int line = res.getColor(R.color.mdtp_line_background);
-    int timeDisplay = res.getColor(R.color.mdtp_numbers_text_color);
-    ColorStateList doneTextColor = res.getColorStateList(R.color.mdtp_done_text_color);
-    int doneBackground = R.drawable.mdtp_done_background_color;
-    int backgroundColor = res.getColor(R.color.mdtp_background_color);
-    int darkBackgroundColor = res.getColor(R.color.mdtp_light_gray);
+    int white = res.getColor(R.color.famdtp_white);
+    int accent = res.getColor(R.color.famdtp_accent_color);
+    int circleBackground = res.getColor(R.color.famdtp_circle_background);
+    int line = res.getColor(R.color.famdtp_line_background);
+    int timeDisplay = res.getColor(R.color.famdtp_numbers_text_color);
+    ColorStateList doneTextColor = res.getColorStateList(R.color.famdtp_done_text_color);
+    int doneBackground = R.drawable.famdtp_done_background_color;
+    int backgroundColor = res.getColor(R.color.famdtp_background_color);
+    int darkBackgroundColor = res.getColor(R.color.famdtp_light_gray);
 
-    int darkGray = res.getColor(R.color.mdtp_dark_gray);
-    int lightGray = res.getColor(R.color.mdtp_light_gray);
-    int darkLine = res.getColor(R.color.mdtp_line_dark);
-    ColorStateList darkDoneTextColor = res.getColorStateList(R.color.mdtp_done_text_color_dark);
-    int darkDoneBackground = R.drawable.mdtp_done_background_color_dark;
+    int darkGray = res.getColor(R.color.famdtp_dark_gray);
+    int lightGray = res.getColor(R.color.famdtp_light_gray);
+    int darkLine = res.getColor(R.color.famdtp_line_dark);
+    ColorStateList darkDoneTextColor = res.getColorStateList(R.color.famdtp_done_text_color_dark);
+    int darkDoneBackground = R.drawable.famdtp_done_background_color_dark;
 
     // Set the colors for each view based on the theme.
     //view.findViewById(R.id.time_display_background).setBackgroundColor(mThemeDark? darkGray : accent);

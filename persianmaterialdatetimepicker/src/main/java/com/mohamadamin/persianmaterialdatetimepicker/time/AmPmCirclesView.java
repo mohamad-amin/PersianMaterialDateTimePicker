@@ -79,20 +79,20 @@ public class AmPmCirclesView extends View {
     this.fontName = fontName;
 
     Resources res = context.getResources();
-    mUnselectedColor = res.getColor(R.color.mdtp_white);
-    mSelectedColor = res.getColor(R.color.mdtp_accent_color);
-    mTouchedColor = res.getColor(R.color.mdtp_accent_color_dark);
-    mAmPmTextColor = res.getColor(R.color.mdtp_ampm_text_color);
-    mAmPmSelectedTextColor = res.getColor(R.color.mdtp_white);
+    mUnselectedColor = res.getColor(R.color.famdtp_white);
+    mSelectedColor = res.getColor(R.color.famdtp_accent_color);
+    mTouchedColor = res.getColor(R.color.famdtp_accent_color_dark);
+    mAmPmTextColor = res.getColor(R.color.famdtp_ampm_text_color);
+    mAmPmSelectedTextColor = res.getColor(R.color.famdtp_white);
     mSelectedAlpha = SELECTED_ALPHA;
     mPaint.setTypeface(TypefaceHelper.get(context, fontName));
     mPaint.setAntiAlias(true);
     mPaint.setTextAlign(Align.CENTER);
 
     mCircleRadiusMultiplier =
-      Float.parseFloat(res.getString(R.string.mdtp_circle_radius_multiplier));
+            Float.parseFloat(res.getString(R.string.famdtp_circle_radius_multiplier));
     mAmPmCircleRadiusMultiplier =
-      Float.parseFloat(res.getString(R.string.mdtp_ampm_circle_radius_multiplier));
+            Float.parseFloat(res.getString(R.string.famdtp_ampm_circle_radius_multiplier));
     mAmText = getContext().getString(R.string.am_label);
     mPmText = getContext().getString(R.string.pm_label);
 
@@ -105,14 +105,14 @@ public class AmPmCirclesView extends View {
   /* package */ void setTheme(Context context, boolean themeDark) {
     Resources res = context.getResources();
     if (themeDark) {
-      mUnselectedColor = res.getColor(R.color.mdtp_circle_background_dark_theme);
-      mSelectedColor = res.getColor(R.color.mdtp_red);
-      mAmPmTextColor = res.getColor(R.color.mdtp_white);
+      mUnselectedColor = res.getColor(R.color.famdtp_circle_background_dark_theme);
+      mSelectedColor = res.getColor(R.color.famdtp_red);
+      mAmPmTextColor = res.getColor(R.color.famdtp_white);
       mSelectedAlpha = SELECTED_ALPHA_THEME_DARK;
     } else {
-      mUnselectedColor = res.getColor(R.color.mdtp_white);
-      mSelectedColor = res.getColor(R.color.mdtp_accent_color);
-      mAmPmTextColor = res.getColor(R.color.mdtp_ampm_text_color);
+      mUnselectedColor = res.getColor(R.color.famdtp_white);
+      mSelectedColor = res.getColor(R.color.famdtp_accent_color);
+      mAmPmTextColor = res.getColor(R.color.famdtp_ampm_text_color);
       mSelectedAlpha = SELECTED_ALPHA;
     }
   }

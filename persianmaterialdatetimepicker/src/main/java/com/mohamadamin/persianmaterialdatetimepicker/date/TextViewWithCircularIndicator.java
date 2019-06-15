@@ -47,9 +47,9 @@ public class TextViewWithCircularIndicator extends android.support.v7.widget.App
     public TextViewWithCircularIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
         Resources res = context.getResources();
-        mCircleColor = res.getColor(R.color.mdtp_accent_color);
-        mRadius = res.getDimensionPixelOffset(R.dimen.mdtp_month_select_circle_radius);
-        mItemIsSelectedText = context.getResources().getString(R.string.mdtp_item_is_selected);
+        mCircleColor = res.getColor(R.color.famdtp_accent_color);
+        mRadius = res.getDimensionPixelOffset(R.dimen.famdtp_month_select_circle_radius);
+        mItemIsSelectedText = context.getResources().getString(R.string.famdtp_item_is_selected);
 
         init();
     }

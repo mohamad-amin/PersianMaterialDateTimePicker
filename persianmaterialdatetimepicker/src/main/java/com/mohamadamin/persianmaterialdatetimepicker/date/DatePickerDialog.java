@@ -215,7 +215,7 @@ public class DatePickerDialog extends DialogFragment implements
                            Bundle savedInstanceState) {
     Log.d(TAG, "onCreateView: ");
     getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-    View view = inflater.inflate(R.layout.mdtp_date_picker_dialog, null);
+    View view = inflater.inflate(R.layout.famdtp_date_picker_dialog, null);
     final Activity activity = getActivity();
     mDayOfWeekTextView = view.findViewById(R.id.date_picker_header);
     mMonthAndDayView = view.findViewById(R.id.date_picker_month_and_day);
@@ -256,12 +256,12 @@ public class DatePickerDialog extends DialogFragment implements
     mYearPickerView = new YearPickerView(activity, this);
 
     Resources res = getResources();
-    mDayPickerDescription = res.getString(R.string.mdtp_day_picker_description);
-    mSelectDay = res.getString(R.string.mdtp_select_day);
-    mYearPickerDescription = res.getString(R.string.mdtp_year_picker_description);
-    mSelectYear = res.getString(R.string.mdtp_select_year);
+    mDayPickerDescription = res.getString(R.string.famdtp_day_picker_description);
+    mSelectDay = res.getString(R.string.famdtp_select_day);
+    mYearPickerDescription = res.getString(R.string.famdtp_year_picker_description);
+    mSelectYear = res.getString(R.string.famdtp_select_year);
 
-    int bgColorResource = mThemeDark ? R.color.mdtp_date_picker_view_animator_dark_theme : R.color.mdtp_date_picker_view_animator;
+    int bgColorResource = mThemeDark ? R.color.famdtp_date_picker_view_animator_dark_theme : R.color.famdtp_date_picker_view_animator;
     view.setBackgroundColor(activity.getResources().getColor(bgColorResource));
 
     mAnimator = view.findViewById(R.id.animator);

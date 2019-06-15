@@ -14,23 +14,13 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/mdtp_date_picker_component_width"
-    android:layout_height="match_parent"
-    android:background="@color/mdtp_date_picker_view_animator"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/date_picker_header"
+    android:layout_width="@dimen/famdtp_date_picker_component_width"
+    android:layout_height="@dimen/famdtp_date_picker_header_height"
+    android:background="@color/famdtp_calendar_header"
     android:gravity="center"
-    android:orientation="vertical" >
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/mdtp_selected_calendar_layout_height"
-        android:orientation="vertical" >
-
-        <include layout="@layout/mdtp_date_picker_selected_date" />
-    </LinearLayout>
-
-    <include layout="@layout/mdtp_date_picker_view_animator" />
-
-    <include layout="@layout/mdtp_done_button" />
-
-</LinearLayout>
+    android:includeFontPadding="false"
+    android:textColor="@color/famdtp_white"
+    android:textSize="@dimen/famdtp_date_picker_header_text_size"
+    android:importantForAccessibility="no" />

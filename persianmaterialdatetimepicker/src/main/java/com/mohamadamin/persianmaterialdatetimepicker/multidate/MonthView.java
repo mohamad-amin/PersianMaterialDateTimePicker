@@ -200,30 +200,30 @@ public abstract class MonthView extends View {
 
     boolean darkTheme = mController != null && mController.isThemeDark();
     if (darkTheme) {
-      mDayTextColor = res.getColor(R.color.mdtp_date_picker_text_normal_dark_theme);
-      mMonthDayTextColor = res.getColor(R.color.mdtp_date_picker_month_day_dark_theme);
-      mDisabledDayTextColor = res.getColor(R.color.mdtp_date_picker_text_disabled_dark_theme);
-      mHighlightedDayTextColor = res.getColor(R.color.mdtp_date_picker_text_highlighted_dark_theme);
+      mDayTextColor = res.getColor(R.color.famdtp_date_picker_text_normal_dark_theme);
+      mMonthDayTextColor = res.getColor(R.color.famdtp_date_picker_month_day_dark_theme);
+      mDisabledDayTextColor = res.getColor(R.color.famdtp_date_picker_text_disabled_dark_theme);
+      mHighlightedDayTextColor = res.getColor(R.color.famdtp_date_picker_text_highlighted_dark_theme);
     } else {
-      mDayTextColor = res.getColor(R.color.mdtp_date_picker_text_normal);
-      mMonthDayTextColor = res.getColor(R.color.mdtp_date_picker_month_day);
-      mDisabledDayTextColor = res.getColor(R.color.mdtp_date_picker_text_disabled);
-      mHighlightedDayTextColor = res.getColor(R.color.mdtp_date_picker_text_highlighted);
+      mDayTextColor = res.getColor(R.color.famdtp_date_picker_text_normal);
+      mMonthDayTextColor = res.getColor(R.color.famdtp_date_picker_month_day);
+      mDisabledDayTextColor = res.getColor(R.color.famdtp_date_picker_text_disabled);
+      mHighlightedDayTextColor = res.getColor(R.color.famdtp_date_picker_text_highlighted);
     }
-    mSelectedDayTextColor = res.getColor(R.color.mdtp_white);
-    mTodayNumberColor = res.getColor(R.color.mdtp_accent_color);
-    mMonthTitleColor = res.getColor(R.color.mdtp_white);
+    mSelectedDayTextColor = res.getColor(R.color.famdtp_white);
+    mTodayNumberColor = res.getColor(R.color.famdtp_accent_color);
+    mMonthTitleColor = res.getColor(R.color.famdtp_white);
 
     mStringBuilder = new StringBuilder(50);
 
-    MINI_DAY_NUMBER_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.mdtp_day_number_size);
-    MONTH_LABEL_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.mdtp_month_label_size);
-    MONTH_DAY_LABEL_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.mdtp_month_day_label_text_size);
-    MONTH_HEADER_SIZE = res.getDimensionPixelOffset(R.dimen.mdtp_month_list_item_header_height);
+    MINI_DAY_NUMBER_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.famdtp_day_number_size);
+    MONTH_LABEL_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.famdtp_month_label_size);
+    MONTH_DAY_LABEL_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.famdtp_month_day_label_text_size);
+    MONTH_HEADER_SIZE = res.getDimensionPixelOffset(R.dimen.famdtp_month_list_item_header_height);
     DAY_SELECTED_CIRCLE_SIZE = res
-      .getDimensionPixelSize(R.dimen.mdtp_day_number_select_circle_radius);
+            .getDimensionPixelSize(R.dimen.famdtp_day_number_select_circle_radius);
 
-    mRowHeight = (res.getDimensionPixelOffset(R.dimen.mdtp_date_picker_view_animator_height)
+    mRowHeight = (res.getDimensionPixelOffset(R.dimen.famdtp_date_picker_view_animator_height)
       - getMonthHeaderSize()) / MAX_NUM_ROWS;
 
     // Set up accessibility components.
@@ -861,7 +861,7 @@ public abstract class MonthView extends View {
       final String date = LanguageUtils.getPersianNumbers(mTempCalendar.getPersianLongDate());
 
       if (day == mSelectedDay) {
-        return getContext().getString(R.string.mdtp_item_is_selected, date);
+        return getContext().getString(R.string.famdtp_item_is_selected, date);
       }
 
       return date;

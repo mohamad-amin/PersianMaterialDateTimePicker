@@ -19,7 +19,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_gravity="center"
-      android:background="@color/mdtp_accent_color" >
+      android:background="@color/famdtp_accent_color">
         <View
             android:id="@+id/center_view"
             android:layout_width="1dp"
@@ -33,76 +33,76 @@
             android:id="@+id/hour_space"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mdtp_time_placeholder"
+            style="@style/famdtp_time_label"
             android:layout_toLeftOf="@+id/separator"
             android:layout_centerVertical="true"
             android:visibility="invisible"
-            style="@style/mdtp_time_label"
+            android:text="@string/famdtp_time_placeholder"
             android:importantForAccessibility="no" />
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_alignRight="@+id/hour_space"
             android:layout_alignLeft="@+id/hour_space"
-            android:layout_marginLeft="@dimen/mdtp_extra_time_label_margin"
-            android:layout_marginRight="@dimen/mdtp_extra_time_label_margin"
+            android:layout_marginLeft="@dimen/famdtp_extra_time_label_margin"
+            android:layout_marginRight="@dimen/famdtp_extra_time_label_margin"
             android:layout_centerVertical="true" >
             <com.mohamadamin.persianmaterialdatetimepicker.AccessibleTextView
                 android:id="@+id/hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mdtp_time_placeholder"
-                android:textColor="@color/mdtp_white"
+                style="@style/famdtp_time_label"
+                android:text="@string/famdtp_time_placeholder"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center"
-                style="@style/mdtp_time_label" />
+                android:textColor="@color/famdtp_white" />
             </FrameLayout>
 
         <TextView
             android:id="@+id/separator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mdtp_time_separator"
-            android:paddingLeft="@dimen/mdtp_separator_padding"
-            android:paddingRight="@dimen/mdtp_separator_padding"
+            style="@style/famdtp_time_label"
+            android:paddingLeft="@dimen/famdtp_separator_padding"
+            android:paddingRight="@dimen/famdtp_separator_padding"
             android:layout_alignRight="@+id/center_view"
             android:layout_centerVertical="true"
-            android:textColor="@color/mdtp_accent_color_focused"
-            style="@style/mdtp_time_label"
+            android:text="@string/famdtp_time_separator"
+            android:textColor="@color/famdtp_accent_color_focused"
             android:importantForAccessibility="no" />
 
         <TextView
             android:id="@+id/minutes_space"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mdtp_time_placeholder"
+            style="@style/famdtp_time_label"
             android:layout_toRightOf="@+id/separator"
             android:layout_centerVertical="true"
             android:visibility="invisible"
-            android:textColor="@color/mdtp_accent_color_focused"
-            style="@style/mdtp_time_label"
+            android:text="@string/famdtp_time_placeholder"
+            android:textColor="@color/famdtp_accent_color_focused"
             android:importantForAccessibility="no" />
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_alignRight="@+id/minutes_space"
             android:layout_alignLeft="@+id/minutes_space"
-            android:layout_marginLeft="@dimen/mdtp_extra_time_label_margin"
-            android:layout_marginRight="@dimen/mdtp_extra_time_label_margin"
+            android:layout_marginLeft="@dimen/famdtp_extra_time_label_margin"
+            android:layout_marginRight="@dimen/famdtp_extra_time_label_margin"
             android:layout_centerVertical="true" >
             <com.mohamadamin.persianmaterialdatetimepicker.AccessibleTextView
                 android:id="@+id/minutes"
-                style="@style/mdtp_time_label"
+                style="@style/famdtp_time_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/mdtp_time_placeholder"
+                android:text="@string/famdtp_time_placeholder"
                 android:layout_gravity="center"
-                android:textColor="@color/mdtp_accent_color_focused" />
+                android:textColor="@color/famdtp_accent_color_focused" />
         </FrameLayout>
         <com.mohamadamin.persianmaterialdatetimepicker.AccessibleTextView
             android:id="@+id/ampm_hitspace"
-            android:layout_width="@dimen/mdtp_ampm_label_size"
+            android:layout_width="@dimen/famdtp_ampm_label_size"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
@@ -112,12 +112,12 @@
             android:id="@+id/ampm_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mdtp_time_placeholder"
-            android:paddingLeft="@dimen/mdtp_ampm_left_padding"
-            android:paddingRight="@dimen/mdtp_ampm_left_padding"
+            style="@style/famdtp_ampm_label"
+            android:paddingLeft="@dimen/famdtp_ampm_left_padding"
+            android:paddingRight="@dimen/famdtp_ampm_left_padding"
             android:layout_toRightOf="@+id/minutes_space"
             android:layout_alignBaseline="@+id/separator"
-            android:textColor="@color/mdtp_accent_color_focused"
-            style="@style/mdtp_ampm_label"
+            android:text="@string/famdtp_time_placeholder"
+            android:textColor="@color/famdtp_accent_color_focused"
             android:importantForAccessibility="no" />
   </RelativeLayout>
