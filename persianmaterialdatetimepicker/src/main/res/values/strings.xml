@@ -19,7 +19,7 @@
     <!-- Label for button to confirm chosen date or time [CHAR LIMIT=30] -->
     <string name="famdtp_done_label" msgid="7007948707597430919">"انجام شد"</string>
     <string name="famdtp_ok">تایید</string>
-    <string name="famdtp_cancel">بیخیال</string>
+    <string name="famdtp_cancel">انصراف</string>
     <!--
          Content description for the hour selector in the time picker, which displays
          selectable hours of the day along the inside edge of a circle, as in an analog clock.
@@ -70,6 +70,6 @@
 
     <!-- DO NOT TRANSLATE -->
     <string name="famdtp_day_of_week_label_typeface" translatable="false">sans-serif</string>
-    <string name="am_label">قبل‌ازظهر</string>
-    <string name="pm_label">بعدازظهر</string>
+    <string name="am_label">ق.ظ</string>
+    <string name="pm_label">ب.ظ</string>
 </resources>

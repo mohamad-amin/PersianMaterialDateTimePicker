@@ -2,12 +2,13 @@ package com.mohamadamin.persianmaterialdatetimepicker.sample;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
 import com.mohamadamin.persianmaterialdatetimepicker.multidate.MultiDatePickerDialog;
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements
                         Log.d(TIMEPICKER, "Dialog was cancelled");
                     }
                 });
-                tpd.show(getFragmentManager(), TIMEPICKER);
+                tpd.show(getSupportFragmentManager(), TIMEPICKER);
                 break;
             }
             case R.id.date_button: {
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements
                 );
                 dpd.setThemeDark(modeDarkDate.isChecked());
                 dpd.setTypeface(fontName);
-                dpd.show(getFragmentManager(), DATEPICKER);
+                dpd.show(getSupportFragmentManager(), DATEPICKER);
                 break;
             }
             case R.id.multi_date_button:
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements
                 //mdpd.setSelectableDays(pc);
                 mdpd.setThemeDark(modeDarkDate.isChecked());
                 mdpd.setTypeface(fontName);
-                mdpd.show(getFragmentManager(), MULTIDATEPICKER);
+                mdpd.show(getSupportFragmentManager(), MULTIDATEPICKER);
                 break;
             default:
                 break;
